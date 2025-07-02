@@ -1,0 +1,18 @@
+services:
+  kiwix:
+    build: .
+    container_name: kiwix_library_server
+    image: phygineer/kiwix-server:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./zim:/data
+    platform: linux/arm64
+
+volumes:
+  zim_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/zim
